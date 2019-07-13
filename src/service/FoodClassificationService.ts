@@ -7,7 +7,7 @@ export class FoodClassificationService {
         this.foodPredictionServiceClient = foodPredictionServiceClient;
     }
 
-    async classifyFoodBasedOnImage(foodClassificationRequest: FoodClassificationRequest): Promise<any> { // TODO - type it
+    async classifyFoodBasedOnImage(foodClassificationRequest: FoodClassificationRequest): Promise<any> {
         try {
             const predictionResponse = await this.foodPredictionServiceClient.predictFood({
                 Url: foodClassificationRequest.imageUrl
