@@ -1,0 +1,32 @@
+{
+  "name": "fix-eats",
+  "version": "1.0.0",
+  "main": "dist/src/index.js",
+  "scripts": {
+    "test": "jest",
+    "build": "tsc",
+    "start": "node dist/App.js",
+    "start-dev": "nodemon --legacy-watch dist/App.js"
+  },
+  "jest": {
+    "testEnvironment": "node"
+  },
+  "files": [
+    "dist"
+  ],
+  "dependencies": {
+    "axios": "^0.18.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.5",
+    "@types/jest": "^24.0.9",
+    "@types/node": "^8.0.57",
+    "jest": "^24.1.0",
+    "ts-jest": "^24.0.0",
+    "typescript": "^3.3.3333"
+  },
+  "repository": "https://github.com/karenkgs/fixEats",
+  "license": "MIT"
+}
