@@ -18,17 +18,19 @@ export class FoodClassificationService {
             let badClassificationProbability;
 
             predictionResponse.predictions.forEach(prediction => {
-                if (foodClassificationRequest.classificationKeys.badClassification === prediction.tagName) {
+                if (foodClassificationRequest.classificationKeys.bad === prediction.tagName) {
                     badClassificationProbability = prediction.probability;
-                } else {
+                } else if (foodClassificationRequest.classificationKeys.good === prediction.tagName) {
                     goodClassificationProbability = prediction.probability;
+                } else {
+                    throw new Error(`The Classification keys don't match`);
                 }
             });
             isGoodFood = goodClassificationProbability > badClassificationProbability;
 
             return {
                 isGoodFood,
-                probability: isGoodFood ? goodClassificationProbability : badClassificationProbability
+                probability: isGoodFood ? `${Math.round(goodClassificationProbability * 100)}%` : `${Math.round(badClassificationProbability * 100)}%`
             };
 
         } catch (error) {

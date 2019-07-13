@@ -27,12 +27,11 @@ app.use(function (req, res, next) {
 // router
 const router: express.Router = express.Router();
 router.route('/classifyFood').post(async (request, response) => {
-    // @ts-ignore
     return response.end(JSON.stringify(await foodClassificationService.classifyFoodBasedOnImage(request.body)));
 });
 // @ts-ignore
-router.route('/').get(async (request, response) => {
-    return response.end('Hello, welcome to our app!');
+router.route('/').get((request, response) => {
+    return response.end('Hello, welcome to fixEats!');
 });
 app.use('/', router);
 

@@ -1,4 +1,4 @@
 export interface ClassificationKeys {
-    goodClassification: string;
-    badClassification: string;
+    good: string;
+    bad: string;
 }
