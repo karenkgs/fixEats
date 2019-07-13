@@ -1,5 +1,6 @@
 import { HttpClient } from '../../utils/httpClient';
 import { PredicitionResponse } from '../../model/customVision/PredictionResponse';
+import { PredictionRequest } from '../../model/customVision/PredictionRequest';
 
 export class FoodPredictionServiceClient {
     httpClient: HttpClient;
@@ -8,12 +9,12 @@ export class FoodPredictionServiceClient {
         this.httpClient = httpClient;
     }
 
-    async predictFood(Url: string): Promise<PredicitionResponse> {
-        if (!Url) {
+    async predictFood(predictionRequest: PredictionRequest): Promise<PredicitionResponse> {
+        if (!predictionRequest.Url) {
             throw new Error('You need to send a valid image URL');
         }
         return await this.httpClient.post({
-            Url
+            Url: predictionRequest.Url
         });
     }
 }

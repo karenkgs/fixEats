@@ -4,7 +4,9 @@
   "main": "dist/src/index.js",
   "scripts": {
     "test": "jest",
-    "build": "tsc"
+    "build": "tsc",
+    "start": "node dist/App.js",
+    "start-dev": "nodemon --legacy-watch dist/App.js"
   },
   "jest": {
     "testEnvironment": "node"

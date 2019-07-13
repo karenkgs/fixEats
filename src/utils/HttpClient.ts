@@ -25,7 +25,7 @@ export class HttpClient {
             }
             return response.data;
         } catch (error) {
-            throw new Error(`Something went wrong, this was the response: ${JSON.stringify(error)}`);
+            throw new Error(`Something went wrong, this was the response: ${error}`);
         }
     }
 }
