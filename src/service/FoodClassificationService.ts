@@ -13,21 +13,29 @@ export class FoodClassificationService {
                 Url: foodClassificationRequest.imageUrl
             });
             let isGoodFood;
+            let goodClassificationProbability;
+            let badClassificationProbability;
 
             predictionResponse.predictions.forEach(prediction => {
-                let goodClassificationProbability;
-                let badClassificationProbability;
+                console.log('Its inside the loop');
                 if (foodClassificationRequest.classificationKeys.badClassification === prediction.tagName) {
                     badClassificationProbability = prediction.probability;
                 } else {
                     goodClassificationProbability = prediction.probability;
                 }
-                isGoodFood = goodClassificationProbability > badClassificationProbability;
             });
 
+            console.log('Its outside the loop');
+            console.log(`Good: ${goodClassificationProbability}`);
+            console.log(`Bad: ${badClassificationProbability}`);
+
+            isGoodFood = goodClassificationProbability > badClassificationProbability;
+
             return {
-                isGoodFood
+                isGoodFood,
+                probability: isGoodFood ? goodClassificationProbability : badClassificationProbability
             };
+
         } catch (error) {
             return {
                 errorMessage: `Something went wrong: ${error}`
